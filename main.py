@@ -14,13 +14,6 @@ import pywav
 
 rtp_list = {}
 rtp_codec_list = {}
-pcap_file = (os.path.join('../test_180s.pcap'))
-out_file = ('test.au')
-print("Scraping: " + pcap_file)
-filter_type = "rtp.ssrc==0x5b6835b7"
-cap = pyshark.FileCapture(pcap_file, display_filter=filter_type)
-print(cap)
-# print(cap[0])
 
 def collectingPayloadBySession(rtp: pyshark.packet.layer.Layer
     , container: list) -> list: 
@@ -69,21 +62,36 @@ def raw2wav(audio: bytearray, fn: str
     wave_write.close()
     print(f"Finished converting raw audio to wav: {fn}")
 
+def openPCAP(pcap_file: str, display_filter) -> pyshark.capture.file_capture.FileCapture:
+    print(f"Scraping: {pcap_file} with filter '{display_filter}'")
+    return pyshark.FileCapture(pcap_file, display_filter=display_filter)
 
-for i in cap:
-    try:
-        rtp = getRTPlayer(i) # layer RTP
-        rtp_codec_list = collectingCodecBySession(rtp, rtp_codec_list)
-        rtp_list = collectingPayloadBySession(rtp, rtp_list)
-    except:
-        pass
+def readStream(cap: pyshark.capture.file_capture.FileCapture):
+    for frame in cap:
+        try:
+            rtp             = getRTPlayer(frame) 
+            rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
+            rtp_list        = collectingPayloadBySession(rtp, rtp_list)
+        except:
+            pass
 
-for rtp_ssrc in rtp_list:
-    rtp_packet = rtp_list[rtp_ssrc]
-    codec = rtp_codec_list[rtp_ssrc]
+def audioSeparation(session):
+    rtp_packet = rtp_list[session]
+    codec = rtp_codec_list[session]
     fmt = usePyWavCodec(codec)
     payload = concatPayload(rtp_packet)
     audio = packetPayload2RawAudio(payload)
-    raw2wav(audio, fn=f'{rtp_ssrc}.wav', fmt=fmt)
+    raw2wav(audio, fn=f'{session}.wav', fmt=fmt)
 
-print("\nFinished outputing raw audio: %s" % out_file)
+if __name__ == "__main__":
+    pcap_file = (os.path.join('../test_180s.pcap'))
+    filter_type = "rtp.ssrc==0x5b6835b7"
+
+    cap = openPCAP(pcap_file, filter_type)
+
+    readStream(cap)
+
+    for rtp_ssrc in rtp_list:
+        audioSeparation(rtp_ssrc)
+
+    print("\nFinished outputing raw audio")
