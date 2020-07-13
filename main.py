@@ -123,7 +123,7 @@ def readStream(cap: pyshark.capture.file_capture.FileCapture
                 , rtp_list:dict={}, rtp_codec_list:dict={}
                 , pair_list:dict={}):
 
-    tp_list, rtp_codec_list, pair_list = Parallel(n_jobs=NUM_CORES)(
+    rtp_list, rtp_codec_list, pair_list = Parallel(n_jobs=NUM_CORES)(
         delayed(processStream)(frame, rtp_list, rtp_codec_list, pair_list) for frame in cap 
         )
 
