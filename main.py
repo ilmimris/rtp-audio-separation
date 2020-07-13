@@ -41,14 +41,14 @@ def collectingCodecBySession(rtp: pyshark.packet.layer.Layer
     if rtp.p_type: container[rtp.ssrc] = getCodec(rtp)
     return container
 
-def getRTPlayer(frame): 
-    return frame[3]
+def getRTPlayer(frame): return frame[3]
 
-def getUDPlayer(frame): 
-    return frame[2]
 
-def getIPlayer(frame): 
-    return frame[1]
+def getUDPlayer(frame): return frame[2]
+
+
+def getIPlayer(frame): return frame[1]
+
 
 def getCodec(rtp: pyshark.packet.layer.Layer)-> str : 
     p_type_dict = {
@@ -100,35 +100,38 @@ def collectingPairSession(packet:pyshark.packet.packet.Packet
     if (dst in container): 
         if (container[dst]['dst'] == src): 
             container[dst]['dst_ssrc'] = rtp.ssrc
-            # print(f"pair found: {container[dst]['src_ssrc']} , {rtp.ssrc}")
+            print(f"pair dst: {container[dst]}")
+            print(f"pair found: {container[dst]['src_ssrc']} , {rtp.ssrc}")
+            print(container)
             return container
     
-    if (container.get(src, None) == None): container[src] = []
+    if (container.get(src, None) == None): container[src] = {}
     if rtp.payload: container[src] = {'dst': dst, 'src_ssrc':rtp.ssrc, 'dst_ssrc':None}
+    print(f"pair_list {container}")
     
     return container
 
-def processStream(frame, rtp_list:dict={}, rtp_codec_list:dict={}
-                , pair_list:dict={}):
-    try:
-        rtp             = getRTPlayer(frame) 
-        rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
-        rtp_list        = collectingPayloadBySession(rtp, rtp_list)
-        pair_list       = collectingPairSession(frame, pair_list)
-    except Exception as e:
-        print(f"error: {e}")
-    return rtp_list, rtp_codec_list, pair_list
+# def processStream(frame):
+#     try:
+#         rtp             = getRTPlayer(frame) 
+#         rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
+#         rtp_list        = collectingPayloadBySession(rtp, rtp_list)
+#         pair_list       = collectingPairSession(frame, pair_list)
+#     except Exception as e:
+#         print(f"error: {e}")
+#     return rtp_list, rtp_codec_list, pair_list
 
 def readStream(cap: pyshark.capture.file_capture.FileCapture
                 , rtp_list:dict={}, rtp_codec_list:dict={}
                 , pair_list:dict={}):
-
-    rtp_list, rtp_codec_list, pair_list = Parallel(n_jobs=NUM_CORES)(
-        delayed(processStream)(frame, rtp_list, rtp_codec_list, pair_list) for frame in cap 
-        )
-
-    # for frame in cap:
-    #     rtp_list, rtp_codec_list, pair_list = processStream(frame)
+    for frame in cap:
+        try:
+            rtp             = getRTPlayer(frame) 
+            rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
+            rtp_list        = collectingPayloadBySession(rtp, rtp_list)
+            pair_list       = collectingPairSession(frame, pair_list)
+        except Exception as e:
+            print(f"error: {e}")
 
     print(f"Finish scrap: {pcap_file}")
     return rtp_list, rtp_codec_list, pair_list
@@ -145,14 +148,14 @@ def audioSeparation(session, rtp_list, rtp_codec_list, outdir=''):
     raw2wav(audio, fn=output, fmt=fmt)
 
 def openPairAudio(pair_list, outdir): 
-    au1 = pair_list['src_ssrc']
+    print(pair_list)
+    au1 = pair_list.get('src_ssrc')
     au2 = pair_list.get('dst_ssrc', None)
     if au2 == None: return False
 
-    first = AudioSegment.from_file(os.path.join(outdir, au1), format="wav")
-    second = AudioSegment.from_file(os.path.join(outdir, au2), format="wav")
-
-    fn = '-'.join([au1, au2, '.wav'])
+    first = AudioSegment.from_file(os.path.join(outdir, f"{au1}.wav"), format="wav")
+    second = AudioSegment.from_file(os.path.join(outdir, f"{au2}.wav"), format="wav")
+    fn = '-'.join([au1, f'{au2}.wav'])
     return first, second, fn
 
 def combinePair(first:pydub.audio_segment.AudioSegment
@@ -172,14 +175,13 @@ if __name__ == "__main__":
 
     rtp_list, rtp_codec_list, pair_list = readStream(cap)
 
-    Parallel(n_jobs=NUM_CORES)( delayed(audioSeparation)(rtp_ssrc, rtp_list, rtp_codec_list, outdir) for rtp_ssrc in rtp_list )
-
-    # for rtp_ssrc in rtp_list:
-    #     audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir)
+    for rtp_ssrc in rtp_list:
+        audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir)
     
     # combine pair if any
     for pair in pair_list:
-        audios = openPairAudio(pair, outdir)
+        audios = openPairAudio(pair_list[pair], outdir)
+        print(audios)
         if (audios): 
             first, second, fn = audios
-            combinePair(first, second, fn)
+            combinePair(first, second, os.path.join(outdir,fn))
