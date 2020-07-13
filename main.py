@@ -96,20 +96,25 @@ def collectingPairSession(packet:pyshark.packet.packet.Packet
     src = ':'.join([ip.src, udp.port])      
     dst = ':'.join([ip.dst, udp.dstport])   
     
+    # print(f"check first {container}")
+    
+    # Check if already have pair
+    if (src in container):
+        if (container[src].get('dst_ssrc', None) != None):
+            return container
+
     # Check pair first
     if (dst in container): 
         if (container[dst]['dst'] == src): 
             container[dst]['dst_ssrc'] = rtp.ssrc
-            print(f"pair dst: {container[dst]}")
             print(f"pair found: {container[dst]['src_ssrc']} , {rtp.ssrc}")
-            print(container)
             return container
-    
+
     if (container.get(src, None) == None): container[src] = {}
-    if rtp.payload: container[src] = {'dst': dst, 'src_ssrc':rtp.ssrc, 'dst_ssrc':None}
-    print(f"pair_list {container}")
-    
+    if (rtp.payload): container[src] = {'dst': dst, 'src_ssrc':rtp.ssrc, 'dst_ssrc':None}
+    # print(f"pair_list {container}")
     return container
+    
 
 # def processStream(frame):
 #     try:
@@ -125,11 +130,11 @@ def readStream(cap: pyshark.capture.file_capture.FileCapture
                 , rtp_list:dict={}, rtp_codec_list:dict={}
                 , pair_list:dict={}):
     for frame in cap:
+        pair_list       = collectingPairSession(frame, pair_list)
         try:
             rtp             = getRTPlayer(frame) 
             rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
             rtp_list        = collectingPayloadBySession(rtp, rtp_list)
-            pair_list       = collectingPairSession(frame, pair_list)
         except Exception as e:
             print(f"error: {e}")
 
