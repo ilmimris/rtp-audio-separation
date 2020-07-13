@@ -3,8 +3,15 @@ import yaml
 import argparse
 import pyshark
 import pywav
+import pydub
+from pydub import AudioSegment
+
+import multiprocessing
+from joblib import Parallel, delayed
+
 
 DEBUG = False
+NUM_CORES = multiprocessing.cpu_count()
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser(description='RTP Audio Parser')
@@ -14,23 +21,34 @@ ap.add_argument("-c", "--config", required=False, help="parser configuration pat
 
 args = vars(ap.parse_args())
 
-# rtp_list = {}
-# rtp_codec_list = {}
+def loadconfig(configfile):
+        with open(configfile, 'r') as stream:
+            try:
+                config = yaml.safe_load(stream)
+            except yaml.YAMLError as exc:
+                print(exc)
+        return config
 
 def collectingPayloadBySession(rtp: pyshark.packet.layer.Layer
-    , container: list) -> list: 
+    , container): 
     if (container.get(rtp.ssrc, None) == None): container[rtp.ssrc] = []
     if rtp.payload: container[rtp.ssrc].append(rtp.payload)
     return container
 
 def collectingCodecBySession(rtp: pyshark.packet.layer.Layer
-    , container: list) -> list:
+    , container):
     if (container.get(rtp.ssrc, None) == None): container[rtp.ssrc] = []
     if rtp.p_type: container[rtp.ssrc] = getCodec(rtp)
     return container
 
-def getRTPlayer(frame):
+def getRTPlayer(frame): 
     return frame[3]
+
+def getUDPlayer(frame): 
+    return frame[2]
+
+def getIPlayer(frame): 
+    return frame[1]
 
 def getCodec(rtp: pyshark.packet.layer.Layer)-> str : 
     p_type_dict = {
@@ -69,25 +87,51 @@ def openPCAP(pcap_file: str, display_filter) -> pyshark.capture.file_capture.Fil
     cap = pyshark.FileCapture(pcap_file, display_filter=display_filter, debug=DEBUG)
     return cap
 
-def loadconfig(configfile):
-        with open(configfile, 'r') as stream:
-            try:
-                config = yaml.safe_load(stream)
-            except yaml.YAMLError as exc:
-                print(exc)
-        return config
+def collectingPairSession(packet:pyshark.packet.packet.Packet
+    , container):
+    ip = getIPlayer(packet)
+    udp = getUDPlayer(packet)
+    rtp = getRTPlayer(packet)
 
-def readStream(cap: pyshark.capture.file_capture.FileCapture, rtp_list:dict={}, rtp_codec_list:dict={}):
-    for frame in cap:
-        try:
-            rtp             = getRTPlayer(frame) 
-            rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
-            rtp_list        = collectingPayloadBySession(rtp, rtp_list)
-        except Exception as e:
-            print(e)
+    src = ':'.join([ip.src, udp.port])      
+    dst = ':'.join([ip.dst, udp.dstport])   
+    
+    # Check pair first
+    if (dst in container): 
+        if (container[dst]['dst'] == src): 
+            container[dst]['dst_ssrc'] = rtp.ssrc
+            # print(f"pair found: {container[dst]['src_ssrc']} , {rtp.ssrc}")
+            return container
+    
+    if (container.get(src, None) == None): container[src] = []
+    if rtp.payload: container[src] = {'dst': dst, 'src_ssrc':rtp.ssrc, 'dst_ssrc':None}
+    
+    return container
+
+def processStream(frame, rtp_list:dict={}, rtp_codec_list:dict={}
+                , pair_list:dict={}):
+    try:
+        rtp             = getRTPlayer(frame) 
+        rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
+        rtp_list        = collectingPayloadBySession(rtp, rtp_list)
+        pair_list       = collectingPairSession(frame, pair_list)
+    except Exception as e:
+        print(f"error: {e}")
+    return rtp_list, rtp_codec_list, pair_list
+
+def readStream(cap: pyshark.capture.file_capture.FileCapture
+                , rtp_list:dict={}, rtp_codec_list:dict={}
+                , pair_list:dict={}):
+
+    tp_list, rtp_codec_list, pair_list = Parallel(n_jobs=NUM_CORES)(
+        delayed(processStream)(frame, rtp_list, rtp_codec_list, pair_list) for frame in cap 
+        )
+
+    # for frame in cap:
+    #     rtp_list, rtp_codec_list, pair_list = processStream(frame)
 
     print(f"Finish scrap: {pcap_file}")
-    return rtp_list, rtp_codec_list
+    return rtp_list, rtp_codec_list, pair_list
 
 def audioSeparation(session, rtp_list, rtp_codec_list, outdir=''):
     print(f"separation audio in session (ssrc): {session}")
@@ -100,17 +144,42 @@ def audioSeparation(session, rtp_list, rtp_codec_list, outdir=''):
     print(f"converting audio in session (ssrc): {session} to {output}")
     raw2wav(audio, fn=output, fmt=fmt)
 
+def openPairAudio(pair_list, outdir): 
+    au1 = pair_list['src_ssrc']
+    au2 = pair_list.get('dst_ssrc', None)
+    if au2 == None: return False
+
+    first = AudioSegment.from_file(os.path.join(outdir, au1), format="wav")
+    second = AudioSegment.from_file(os.path.join(outdir, au2), format="wav")
+
+    fn = '-'.join([au1, au2, '.wav'])
+    return first, second, fn
+
+def combinePair(first:pydub.audio_segment.AudioSegment
+                , second:pydub.audio_segment.AudioSegment, 
+                fn:str, position=0):
+    combined = first.overlay(second, position)
+    combined.export(fn, format="wav")
+
 if __name__ == "__main__":
     pcap_file   = args['input'] if (args['input']) else (os.path.join('../test_180s.pcap'))
     outdir      = args['outdir'] if (args['outdir']) else os.getcwd()
     config      = loadconfig(args['config']) if (args['config']) else None
-    
-    # filter_type = "rtp.ssrc==0x5b6835b7"
+
     filter_type = config['filter'] if config else 'rtp'
 
     cap = openPCAP(pcap_file, filter_type)
 
-    rtp_list, rtp_codec_list = readStream(cap)
+    rtp_list, rtp_codec_list, pair_list = readStream(cap)
 
-    for rtp_ssrc in rtp_list:
-        audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir)
+    Parallel(n_jobs=NUM_CORES)( delayed(audioSeparation)(rtp_ssrc, rtp_list, rtp_codec_list, outdir) for rtp_ssrc in rtp_list )
+
+    # for rtp_ssrc in rtp_list:
+    #     audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir)
+    
+    # combine pair if any
+    for pair in pair_list:
+        audios = openPairAudio(pair, outdir)
+        if (audios): 
+            first, second, fn = audios
+            combinePair(first, second, fn)
