@@ -1,0 +1,285 @@
+20-07-2020 07:28:23 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 07:28:23 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 07:28:23 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 07:33:56 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 07:33:56 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 07:33:56 root         (MainThread) INFO     finish read in 332.9606852531433 seconds
+20-07-2020 07:33:56 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 07:33:56 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 07:33:56 root         (Thread-2  ) DEBUG    merginWorker Started
+20-07-2020 07:33:56 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 07:33:56 root         (Thread-4  ) DEBUG    merginWorker Started
+20-07-2020 07:33:56 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 07:33:56 root         (Thread-6  ) DEBUG    merginWorker Started
+20-07-2020 07:33:56 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 07:33:56 root         (Thread-8  ) DEBUG    merginWorker Started
+20-07-2020 07:33:56 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 07:33:56 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 07:33:56 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 07:33:56 root         (MainThread) INFO     Finish
+20-07-2020 07:33:56 root         (Thread-1  ) INFO     Working on 0x0d730ec4
+20-07-2020 07:37:35 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 07:37:35 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 07:37:35 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 07:43:25 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 07:43:25 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 07:43:25 root         (MainThread) INFO     finish read in 349.99746656417847 seconds
+20-07-2020 07:43:25 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 07:43:25 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 07:43:25 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 07:43:25 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 07:43:25 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 07:43:25 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 07:43:25 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 07:43:25 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 07:43:25 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 07:43:25 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 07:43:25 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 07:43:25 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 07:43:25 root         (MainThread) INFO     Finish
+20-07-2020 07:46:14 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 07:46:14 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 07:46:14 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 07:52:27 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 07:52:27 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 07:52:27 root         (MainThread) INFO     finish read in 372.42030119895935 seconds
+20-07-2020 07:52:27 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 07:52:27 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 07:52:27 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 07:52:27 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 07:52:27 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 07:52:27 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 07:52:27 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 07:52:27 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 07:52:27 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 07:52:27 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 07:52:27 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 07:52:27 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 07:52:27 root         (Thread-1  ) INFO     Converting 0x0d730ec4
+20-07-2020 07:52:27 root         (Thread-2  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 07:52:27 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 07:52:27 root         (Thread-3  ) INFO     Converting 0x46873251
+20-07-2020 07:52:27 root         (Thread-2  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 07:52:27 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 07:52:27 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir\0x0d730ec4.wav
+20-07-2020 07:52:27 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir\0x46873251.wav
+20-07-2020 07:52:27 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir\0x46873251.wav
+20-07-2020 07:52:27 root         (Thread-3  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 07:52:27 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir\0x0d730ec4.wav
+20-07-2020 07:52:27 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 07:59:41 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 07:59:41 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 07:59:41 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 08:05:18 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 08:05:18 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 08:05:18 root         (MainThread) INFO     finish read in 337.24977016448975 seconds
+20-07-2020 08:05:18 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 08:05:18 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 08:05:18 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 08:05:18 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 08:05:18 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 08:05:18 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 08:05:18 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 08:05:18 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 08:05:18 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 08:05:18 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 08:05:18 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 08:05:18 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 08:05:18 root         (Thread-2  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 08:05:18 root         (Thread-2  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 08:05:18 root         (Thread-1  ) INFO     Converting 0x0d730ec4
+20-07-2020 08:05:18 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 08:05:18 root         (Thread-3  ) INFO     Converting 0x46873251
+20-07-2020 08:05:18 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir\0x0d730ec4.wav
+20-07-2020 08:05:18 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 08:05:18 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir\0x46873251.wav
+20-07-2020 08:05:18 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir\0x0d730ec4.wav
+20-07-2020 08:05:18 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir\0x46873251.wav
+20-07-2020 08:05:18 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 08:05:18 root         (Thread-3  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 08:09:09 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 08:09:09 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 08:09:09 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 08:15:27 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 08:15:27 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 08:15:27 root         (MainThread) INFO     finish read in 378.01987957954407 seconds
+20-07-2020 08:15:27 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 08:15:27 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 08:15:27 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 08:15:27 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 08:15:27 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 08:15:27 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 08:15:27 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 08:15:27 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 08:15:27 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 08:15:27 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 08:15:27 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 08:15:27 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 08:15:27 root         (Thread-3  ) INFO     Converting 0x0d730ec4
+20-07-2020 08:15:27 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 08:15:27 root         (Thread-2  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 08:15:27 root         (Thread-2  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 08:15:27 root         (Thread-1  ) INFO     Converting 0x46873251
+20-07-2020 08:15:27 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir\0x0d730ec4.wav
+20-07-2020 08:15:27 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 08:15:27 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir\0x46873251.wav
+20-07-2020 08:15:27 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir\0x0d730ec4.wav
+20-07-2020 08:15:27 root         (Thread-3  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 08:15:27 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir\0x46873251.wav
+20-07-2020 08:15:27 root         (Thread-1  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 08:15:27 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'outdir\\0x0d730ec4.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:15:28 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'outdir\\0x46873251.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:15:28 root         (Thread-2  ) DEBUG    (<pydub.audio_segment.AudioSegment object at 0x000001975382B1C8>, <pydub.audio_segment.AudioSegment object at 0x000001975382B508>, '0x0d730ec4-0x46873251.wav')
+20-07-2020 08:15:28 root         (MainThread) INFO     Finish
+20-07-2020 08:35:48 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 08:35:48 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4||rtp.ssrc==0xd7a0f4c||rtp.ssrc==0x48161a90||rtp.ssrc==0x7f46980||rtp.ssrc==0xd700e80'
+20-07-2020 08:35:48 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 08:42:20 root         (MainThread) INFO     Packet nr 41318
+20-07-2020 08:42:20 root         (MainThread) INFO     Byte per second 8842052
+20-07-2020 08:42:20 root         (MainThread) INFO     finish read in 391.5631465911865 seconds
+20-07-2020 08:42:20 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 08:42:20 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 08:42:20 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 08:42:20 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 08:42:20 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 08:42:20 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 08:42:20 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 08:42:20 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 08:42:20 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 08:42:20 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 08:42:20 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 08:42:20 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 08:42:20 root         (Thread-2  ) INFO     Merging 192.168.255.18:11116
+20-07-2020 08:42:20 root         (Thread-4  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 08:42:20 root         (Thread-6  ) INFO     Merging 192.168.255.100:3916
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Converting 0x07f46980
+20-07-2020 08:42:20 root         (Thread-2  ) DEBUG    {'dst': '192.168.255.100:3712', 'src_ssrc': '0x07f46980', 'dst_ssrc': '0x0d700e80'}
+20-07-2020 08:42:20 root         (Thread-5  ) INFO     Converting 0x46873251
+20-07-2020 08:42:20 root         (Thread-3  ) INFO     Converting 0x0d730ec4
+20-07-2020 08:42:20 root         (Thread-4  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Converting 0x0d700e80
+20-07-2020 08:42:20 root         (Thread-6  ) DEBUG    {'dst': '172.20.0.182:6614', 'src_ssrc': '0x0d7a0f4c', 'dst_ssrc': '0x48161a90'}
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x07f46980
+20-07-2020 08:42:20 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 08:42:20 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x0d700e80
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x07f46980 to output\0x07f46980.wav
+20-07-2020 08:42:20 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x46873251 to output\0x46873251.wav
+20-07-2020 08:42:20 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to output\0x0d730ec4.wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x0d700e80 to output\0x0d700e80.wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Finished converting raw audio to wav: output\0x07f46980.wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Finish convert session 0x07f46980 raw audio to wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Finished converting raw audio to wav: output\0x0d700e80.wav
+20-07-2020 08:42:20 root         (Thread-3  ) INFO     Finished converting raw audio to wav: output\0x0d730ec4.wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Finish convert session 0x0d700e80 raw audio to wav
+20-07-2020 08:42:20 root         (Thread-5  ) INFO     Finished converting raw audio to wav: output\0x46873251.wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Converting 0x0d7a0f4c
+20-07-2020 08:42:20 root         (Thread-3  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 08:42:20 root         (Thread-5  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d7a0f4c
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Converting 0x48161a90
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d7a0f4c to output\0x0d7a0f4c.wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x48161a90
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x48161a90 to output\0x48161a90.wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Finished converting raw audio to wav: output\0x0d7a0f4c.wav
+20-07-2020 08:42:20 root         (Thread-1  ) INFO     Finish convert session 0x0d7a0f4c raw audio to wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Finished converting raw audio to wav: output\0x48161a90.wav
+20-07-2020 08:42:20 root         (Thread-7  ) INFO     Finish convert session 0x48161a90 raw audio to wav
+20-07-2020 08:49:26 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 08:49:26 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4||rtp.ssrc==0xd7a0f4c||rtp.ssrc==0x48161a90||rtp.ssrc==0x7f46980||rtp.ssrc==0xd700e80'
+20-07-2020 08:49:26 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 08:56:00 root         (MainThread) INFO     Packet nr 41318
+20-07-2020 08:56:00 root         (MainThread) INFO     Byte per second 8842052
+20-07-2020 08:56:00 root         (MainThread) INFO     finish read in 393.71547985076904 seconds
+20-07-2020 08:56:00 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 08:56:00 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 08:56:00 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 08:56:00 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 08:56:00 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 08:56:00 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 08:56:00 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 08:56:00 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 08:56:00 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 08:56:00 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 08:56:00 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 08:56:00 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Converting 0x07f46980
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Converting 0x0d730ec4
+20-07-2020 08:56:00 root         (Thread-2  ) INFO     Merging 192.168.255.18:11116
+20-07-2020 08:56:00 root         (Thread-4  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 08:56:00 root         (Thread-4  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 08:56:00 root         (Thread-7  ) INFO     Converting 0x46873251
+20-07-2020 08:56:00 root         (Thread-3  ) INFO     Converting 0x0d700e80
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x07f46980
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 08:56:00 root         (Thread-2  ) DEBUG    {'dst': '192.168.255.100:3712', 'src_ssrc': '0x07f46980', 'dst_ssrc': '0x0d700e80'}
+20-07-2020 08:56:00 root         (Thread-6  ) INFO     Merging 192.168.255.100:3916
+20-07-2020 08:56:00 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 08:56:00 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x0d700e80
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to output\0x0d730ec4.wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x07f46980 to output\0x07f46980.wav
+20-07-2020 08:56:00 root         (Thread-6  ) DEBUG    {'dst': '172.20.0.182:6614', 'src_ssrc': '0x0d7a0f4c', 'dst_ssrc': '0x48161a90'}
+20-07-2020 08:56:00 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x0d700e80 to output\0x0d700e80.wav
+20-07-2020 08:56:00 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x46873251 to output\0x46873251.wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Finished converting raw audio to wav: output\0x07f46980.wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Finish convert session 0x07f46980 raw audio to wav
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Finished converting raw audio to wav: output\0x0d730ec4.wav
+20-07-2020 08:56:00 root         (Thread-3  ) INFO     Finished converting raw audio to wav: output\0x0d700e80.wav
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 08:56:00 root         (Thread-3  ) INFO     Finish convert session 0x0d700e80 raw audio to wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Converting 0x0d7a0f4c
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d7a0f4c
+20-07-2020 08:56:00 root         (Thread-7  ) INFO     Finished converting raw audio to wav: output\0x46873251.wav
+20-07-2020 08:56:00 root         (Thread-7  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d7a0f4c to output\0x0d7a0f4c.wav
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Converting 0x48161a90
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x48161a90
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x48161a90 to output\0x48161a90.wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Finished converting raw audio to wav: output\0x0d7a0f4c.wav
+20-07-2020 08:56:00 root         (Thread-1  ) INFO     Finish convert session 0x0d7a0f4c raw audio to wav
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Finished converting raw audio to wav: output\0x48161a90.wav
+20-07-2020 08:56:00 root         (Thread-5  ) INFO     Finish convert session 0x48161a90 raw audio to wav
+20-07-2020 08:56:00 pydub.converter (Thread-4  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x0d730ec4.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 pydub.converter (Thread-6  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x0d7a0f4c.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x07f46980.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x0d700e80.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 pydub.converter (Thread-6  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x48161a90.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 pydub.converter (Thread-4  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x46873251.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 08:56:00 root         (Thread-2  ) DEBUG    (<pydub.audio_segment.AudioSegment object at 0x0000023250CA7DC8>, <pydub.audio_segment.AudioSegment object at 0x0000023250DFA748>, '0x07f46980-0x0d700e80.wav')
+20-07-2020 08:56:00 root         (Thread-6  ) DEBUG    (<pydub.audio_segment.AudioSegment object at 0x0000023250D1BAC8>, <pydub.audio_segment.AudioSegment object at 0x00000232507D3AC8>, '0x0d7a0f4c-0x48161a90.wav')
+20-07-2020 08:56:00 root         (Thread-4  ) DEBUG    (<pydub.audio_segment.AudioSegment object at 0x0000023250E22788>, <pydub.audio_segment.AudioSegment object at 0x0000023250CAC548>, '0x0d730ec4-0x46873251.wav')
+20-07-2020 08:56:00 root         (MainThread) INFO     Finish
+20-07-2020 09:12:49 root         (MainThread) INFO     Start capturing test_180s.pcap
+20-07-2020 09:12:49 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+20-07-2020 09:12:49 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+20-07-2020 09:18:40 root         (MainThread) INFO     Packet nr 17779
+20-07-2020 09:18:40 root         (MainThread) INFO     Byte per second 3804706
+20-07-2020 09:18:40 root         (MainThread) INFO     finish read in 350.929251909256 seconds
+20-07-2020 09:18:40 root         (MainThread) INFO     Finish capture test_180s.pcap
+20-07-2020 09:18:40 root         (Thread-1  ) DEBUG    converterWorker Started
+20-07-2020 09:18:40 root         (Thread-2  ) DEBUG    mergingWorker Started
+20-07-2020 09:18:40 root         (Thread-3  ) DEBUG    converterWorker Started
+20-07-2020 09:18:40 root         (Thread-4  ) DEBUG    mergingWorker Started
+20-07-2020 09:18:40 root         (Thread-5  ) DEBUG    converterWorker Started
+20-07-2020 09:18:40 root         (Thread-6  ) DEBUG    mergingWorker Started
+20-07-2020 09:18:40 root         (Thread-7  ) DEBUG    converterWorker Started
+20-07-2020 09:18:40 root         (Thread-8  ) DEBUG    mergingWorker Started
+20-07-2020 09:18:40 root         (MainThread) INFO     Converting raw audio to wav
+20-07-2020 09:18:56 root         (MainThread) INFO     Finish convert raw audio to wav
+20-07-2020 09:18:56 root         (MainThread) INFO     Merging pair wav into one wav
+20-07-2020 09:18:56 root         (Thread-2  ) INFO     Merging 192.168.255.100:3780
+20-07-2020 09:18:56 root         (Thread-3  ) INFO     Converting 0x46873251
+20-07-2020 09:18:56 root         (Thread-1  ) INFO     Converting 0x0d730ec4
+20-07-2020 09:18:56 root         (Thread-2  ) DEBUG    {'dst': '172.20.0.139:2202', 'src_ssrc': '0x0d730ec4', 'dst_ssrc': '0x46873251'}
+20-07-2020 09:18:56 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x46873251
+20-07-2020 09:18:56 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+20-07-2020 09:18:56 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x46873251 to output\0x46873251.wav
+20-07-2020 09:18:56 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to output\0x0d730ec4.wav
+20-07-2020 09:18:56 root         (Thread-3  ) INFO     Finished converting raw audio to wav: output\0x46873251.wav
+20-07-2020 09:18:56 root         (Thread-3  ) INFO     Finish convert session 0x46873251 raw audio to wav
+20-07-2020 09:18:56 root         (Thread-1  ) INFO     Finished converting raw audio to wav: output\0x0d730ec4.wav
+20-07-2020 09:18:56 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+20-07-2020 09:18:56 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x0d730ec4.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 09:18:56 pydub.converter (Thread-2  ) DEBUG    subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', 'output\\0x46873251.wav', '-acodec', 'pcm_u8', '-vn', '-f', 'wav', '-'])
+20-07-2020 09:18:57 root         (Thread-2  ) DEBUG    (<pydub.audio_segment.AudioSegment object at 0x000001DEB5876748>, <pydub.audio_segment.AudioSegment object at 0x000001DEB55DEEC8>, '0x0d730ec4-0x46873251.wav')
+20-07-2020 09:18:57 root         (MainThread) INFO     Finish

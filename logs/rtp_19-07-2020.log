@@ -1,0 +1,208 @@
+19-07-2020 17:14:58 root         (MainThread) INFO     Start capturing test_180s.pcap
+19-07-2020 17:14:58 root         (MainThread) INFO     Scraping: test_180s.pcap with filter 'rtp.ssrc==0x46873251||rtp.ssrc==0x0d730ec4'
+19-07-2020 17:14:58 asyncio      (MainThread) DEBUG    Using proactor: IocpProactor
+19-07-2020 17:14:58 root         (Thread-1  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-1  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-2  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-2  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-3  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-3  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-4  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-4  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-5  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-5  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-6  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-6  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-7  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-7  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:14:58 root         (Thread-8  ) DEBUG    Worker Started
+19-07-2020 17:14:58 root         (Thread-8  ) DEBUG    <queue.Queue object at 0x000002E574943DC8>
+19-07-2020 17:15:22 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:15:22 root         (MainThread) DEBUG    1000
+19-07-2020 17:15:22 root         (Thread-1  ) DEBUG    1000
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/1000\0x0d730ec4.wav
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/1000\0x0d730ec4.wav
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/1000\0x46873251.wav
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/1000\0x46873251.wav
+19-07-2020 17:15:22 root         (Thread-1  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:15:43 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:15:43 root         (MainThread) DEBUG    2000
+19-07-2020 17:15:43 root         (Thread-2  ) DEBUG    2000
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/2000\0x46873251.wav
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     Finished converting raw audio to wav: outdir/2000\0x46873251.wav
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/2000\0x0d730ec4.wav
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     Finished converting raw audio to wav: outdir/2000\0x0d730ec4.wav
+19-07-2020 17:15:43 root         (Thread-2  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:16:04 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:16:04 root         (MainThread) DEBUG    3000
+19-07-2020 17:16:04 root         (Thread-3  ) DEBUG    3000
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/3000\0x46873251.wav
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir/3000\0x46873251.wav
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/3000\0x0d730ec4.wav
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir/3000\0x0d730ec4.wav
+19-07-2020 17:16:04 root         (Thread-3  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:16:25 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:16:25 root         (MainThread) DEBUG    4000
+19-07-2020 17:16:25 root         (Thread-4  ) DEBUG    4000
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/4000\0x46873251.wav
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     Finished converting raw audio to wav: outdir/4000\0x46873251.wav
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/4000\0x0d730ec4.wav
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     Finished converting raw audio to wav: outdir/4000\0x0d730ec4.wav
+19-07-2020 17:16:25 root         (Thread-4  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:16:46 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:16:46 root         (MainThread) DEBUG    5000
+19-07-2020 17:16:46 root         (Thread-5  ) DEBUG    5000
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/5000\0x46873251.wav
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     Finished converting raw audio to wav: outdir/5000\0x46873251.wav
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/5000\0x0d730ec4.wav
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     Finished converting raw audio to wav: outdir/5000\0x0d730ec4.wav
+19-07-2020 17:16:46 root         (Thread-5  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:17:08 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:17:08 root         (MainThread) DEBUG    6000
+19-07-2020 17:17:08 root         (Thread-6  ) DEBUG    6000
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/6000\0x46873251.wav
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     Finished converting raw audio to wav: outdir/6000\0x46873251.wav
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/6000\0x0d730ec4.wav
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     Finished converting raw audio to wav: outdir/6000\0x0d730ec4.wav
+19-07-2020 17:17:08 root         (Thread-6  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:17:29 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:17:29 root         (MainThread) DEBUG    7000
+19-07-2020 17:17:29 root         (Thread-7  ) DEBUG    7000
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/7000\0x46873251.wav
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     Finished converting raw audio to wav: outdir/7000\0x46873251.wav
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/7000\0x0d730ec4.wav
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     Finished converting raw audio to wav: outdir/7000\0x0d730ec4.wav
+19-07-2020 17:17:29 root         (Thread-7  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:17:50 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:17:50 root         (MainThread) DEBUG    8000
+19-07-2020 17:17:50 root         (Thread-8  ) DEBUG    8000
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/8000\0x46873251.wav
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     Finished converting raw audio to wav: outdir/8000\0x46873251.wav
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/8000\0x0d730ec4.wav
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     Finished converting raw audio to wav: outdir/8000\0x0d730ec4.wav
+19-07-2020 17:17:50 root         (Thread-8  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:18:11 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:18:11 root         (MainThread) DEBUG    9000
+19-07-2020 17:18:11 root         (Thread-1  ) DEBUG    9000
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/9000\0x46873251.wav
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/9000\0x46873251.wav
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/9000\0x0d730ec4.wav
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/9000\0x0d730ec4.wav
+19-07-2020 17:18:11 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:18:32 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:18:32 root         (MainThread) DEBUG    10000
+19-07-2020 17:18:32 root         (Thread-2  ) DEBUG    10000
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/10000\0x0d730ec4.wav
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     Finished converting raw audio to wav: outdir/10000\0x0d730ec4.wav
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/10000\0x46873251.wav
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     Finished converting raw audio to wav: outdir/10000\0x46873251.wav
+19-07-2020 17:18:32 root         (Thread-2  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:18:54 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:18:54 root         (MainThread) DEBUG    11000
+19-07-2020 17:18:54 root         (Thread-3  ) DEBUG    11000
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/11000\0x0d730ec4.wav
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir/11000\0x0d730ec4.wav
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/11000\0x46873251.wav
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     Finished converting raw audio to wav: outdir/11000\0x46873251.wav
+19-07-2020 17:18:54 root         (Thread-3  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:19:15 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:19:15 root         (MainThread) DEBUG    12000
+19-07-2020 17:19:15 root         (Thread-4  ) DEBUG    12000
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/12000\0x0d730ec4.wav
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     Finished converting raw audio to wav: outdir/12000\0x0d730ec4.wav
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/12000\0x46873251.wav
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     Finished converting raw audio to wav: outdir/12000\0x46873251.wav
+19-07-2020 17:19:15 root         (Thread-4  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:19:35 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:19:35 root         (MainThread) DEBUG    13000
+19-07-2020 17:19:35 root         (Thread-5  ) DEBUG    13000
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/13000\0x0d730ec4.wav
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     Finished converting raw audio to wav: outdir/13000\0x0d730ec4.wav
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/13000\0x46873251.wav
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     Finished converting raw audio to wav: outdir/13000\0x46873251.wav
+19-07-2020 17:19:35 root         (Thread-5  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:19:56 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:19:56 root         (MainThread) DEBUG    14000
+19-07-2020 17:19:56 root         (Thread-6  ) DEBUG    14000
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/14000\0x0d730ec4.wav
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     Finished converting raw audio to wav: outdir/14000\0x0d730ec4.wav
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/14000\0x46873251.wav
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     Finished converting raw audio to wav: outdir/14000\0x46873251.wav
+19-07-2020 17:19:56 root         (Thread-6  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:20:18 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:20:18 root         (MainThread) DEBUG    15000
+19-07-2020 17:20:18 root         (Thread-7  ) DEBUG    15000
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/15000\0x0d730ec4.wav
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     Finished converting raw audio to wav: outdir/15000\0x0d730ec4.wav
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/15000\0x46873251.wav
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     Finished converting raw audio to wav: outdir/15000\0x46873251.wav
+19-07-2020 17:20:18 root         (Thread-7  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:20:39 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:20:39 root         (MainThread) DEBUG    16000
+19-07-2020 17:20:39 root         (Thread-8  ) DEBUG    16000
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/16000\0x0d730ec4.wav
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     Finished converting raw audio to wav: outdir/16000\0x0d730ec4.wav
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/16000\0x46873251.wav
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     Finished converting raw audio to wav: outdir/16000\0x46873251.wav
+19-07-2020 17:20:39 root         (Thread-8  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:21:00 root         (MainThread) INFO     Putting Queue
+19-07-2020 17:21:00 root         (MainThread) DEBUG    17000
+19-07-2020 17:21:00 root         (Thread-1  ) DEBUG    17000
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x0d730ec4
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x0d730ec4 to outdir/17000\0x0d730ec4.wav
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/17000\0x0d730ec4.wav
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     Finish convert session 0x0d730ec4 raw audio to wav
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     separation audio in session (ssrc): 0x46873251
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     converting audio in session (ssrc): 0x46873251 to outdir/17000\0x46873251.wav
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     Finished converting raw audio to wav: outdir/17000\0x46873251.wav
+19-07-2020 17:21:00 root         (Thread-1  ) INFO     Finish convert session 0x46873251 raw audio to wav
+19-07-2020 17:21:16 root         (MainThread) INFO     Finish capture test_180s.pcap
+19-07-2020 17:21:16 root         (MainThread) INFO     Finish
