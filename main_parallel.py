@@ -5,10 +5,14 @@ import pyshark
 import pywav
 import pydub
 from pydub import AudioSegment
-
+from pathlib import Path
 import multiprocessing
-from multiprocessing import Process, Queue
+
+from threading import Thread
+from queue import Queue
+
 from time import sleep
+import time
 
 import logging as logger
 from datetime import date
@@ -20,8 +24,8 @@ date = today.strftime("%d-%m-%Y")
 logger.basicConfig(
     filename=os.path.join(os.getcwd(), f"rtp_{date}.log"),
     filemode="a",
-    format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
-    datefmt="%d-%m-%Y %H:%M",
+    format="%(asctime)s %(name)-12s (%(threadName)-10s) %(levelname)-8s %(message)s",
+    datefmt="%d-%m-%Y %H:%M:%S",
     level=logger.DEBUG,
 )
 
@@ -97,16 +101,16 @@ def collectingPairSession(packet: pyshark.packet.packet.Packet, container):
     return container
 
 
-def getRTPlayer(frame):
-    return frame[3]
+def getRTPlayer(packet):
+    return packet[3]
 
 
-def getUDPlayer(frame):
-    return frame[2]
+def getUDPlayer(packet):
+    return packet[2]
 
 
-def getIPlayer(frame):
-    return frame[1]
+def getIPlayer(packet):
+    return packet[1]
 
 
 def getCodec(rtp: pyshark.packet.layer.Layer) -> str:
@@ -151,23 +155,24 @@ def readStream(
     rtp_codec_list: dict = {},
     pair_list: dict = {},
 ):
-    for frame in cap:
+    start_time = time.time()
+    countPacket = 0
+    bandwidth = 0
+    for packet in cap:
+        countPacket +=1
+        bandwidth = bandwidth + int(packet.length)
         try:
-            rtp = getRTPlayer(frame)
-            pair_list = collectingPairSession(frame, pair_list)
+            rtp = getRTPlayer(packet)
+            pair_list = collectingPairSession(packet, pair_list)
             rtp_codec_list = collectingCodecBySession(rtp, rtp_codec_list)
             rtp_list = collectingPayloadBySession(rtp, rtp_list)
         except Exception as e:
             logger.error(f"error: {e}")
-
+    
+    logger.info(f"Packet nr {countPacket}")
+    logger.info(f"Byte per second {bandwidth}")
+    logger.info("finish read in {} seconds".format(time.time() - start_time))
     return rtp_list, rtp_codec_list, pair_list
-
-
-def queueStream(
-    cap: pyshark.capture.file_capture.FileCapture, queue: multiprocessing.queues.Queue
-):
-    for frame in cap:
-        queue.put(frame)
 
 
 def audioSeparation(session, rtp_list, rtp_codec_list, outdir=""):
@@ -205,39 +210,37 @@ def combinePair(
     combined.export(fn, format="wav")
 
 
-# Parallel Processing
-queue = Queue()
+def converterWorker(queue, outdir, rtp_codec_list, rtp_list, pair_list):
+    logger.debug("converterWorker Started")
+    while True:
+        rtp_ssrc = queue.get()
+        
+        Path(outdir).mkdir(parents=True, exist_ok=True)
+        
+        logger.info(f"Converting {rtp_ssrc}")
+        audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir=outdir)
+        logger.info(f"Finish convert session {rtp_ssrc} raw audio to wav")
+        queue.task_done()
+
+def mergingWorker(queue, outdir, pair_list):
+    logger.debug("mergingWorker Started")
+    while True:
+        pair = queue.get()
+
+        logger.info(f"Merging {pair}")
+        audios = openPairAudio(pair_list[pair], outdir)
+        
+        outdir = outdir+'/merge'
+        Path(outdir).mkdir(parents=True, exist_ok=True)
+        logger.debug(audios)
+        if audios:
+            first, second, fn = audios
+            combinePair(first, second, os.path.join(outdir, fn))
+        queue.task_done()
 
 
-def worker(queue, rtp_ssrc, rtp_list, rtp_codec_list):
-    while queue.qsize() > 0:
-        fram = queue.get()
-        rtp = getRTPlayer(frame)
-        pair_list = collectingPairSession(frame, pair_list)
-        rtp_codec_list = collectingCodecBySession(rtp, rtp_codec_list)
-        rtp_list = collectingPayloadBySession(rtp, rtp_list)
-        sleep(1)
-
-    print("worker closed")
-
-
-def handler():
-    # Spawn n_core processes, assigning the method to be executed
-    # and the input arguments (the queue)
-    processes = [
-        Process(target=worker, args=(queue, rtp_ssrc, rtp_list, rtp_codec_list))
-        for _ in range(NUM_CORES)
-    ]
-
-    for process in processes:
-        process.start()
-        print("Process started")
-
-    for process in processes:
-        process.join()
-
-
-if __name__ == "__main__":
+def main():
+    rtp_list, rtp_codec_list, pair_list = {}, {}, {}
     pcap_file = (
         args["input"] if (args["input"]) else (os.path.join("../test_180s.pcap"))
     )
@@ -249,25 +252,40 @@ if __name__ == "__main__":
     logger.info(f"Start capturing {pcap_file}")
     cap = openPCAP(pcap_file, filter_type)
 
-    queueStream(cap)
-    rtp_ssrc, rtp_list, rtp_codec_list = {}, {}, {}
-    handler()
-    # rtp_list, rtp_codec_list, pair_list = readStream(cap)
-
+    rtp_list, rtp_codec_list, pair_list = readStream(cap)
     logger.info(f"Finish capture {pcap_file}")
 
-    # logger.info(f"Converting raw audio to wav")
-    # for rtp_ssrc in rtp_list:
-    #     audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir)
-    # logger.info(f"Finish convert raw audio to wav")
-    handler()
+    # Parallel Processing using multithread
+    q_convert = Queue()
+    q_merge = Queue()
 
+    # turn-on the worker thread
+    threads = []
+    for i in range(int(NUM_CORES*0.5)):
+        t1 = Thread(target=converterWorker, args=(q_convert, outdir, rtp_codec_list, rtp_list, pair_list, ), daemon=True)
+        t2 = Thread(target=mergingWorker, args=(q_merge, outdir, pair_list, ), daemon=True)
+        threads.append(t1)
+        threads.append(t2)
+        t1.start()
+        t2.start()
+
+    # queueStream(cap, queue)
+
+    logger.info(f"Converting raw audio to wav")
+    for rtp_ssrc in rtp_list:
+        q_convert.put(rtp_ssrc)
+    logger.info(f"Finish convert raw audio to wav")
+    
     # combine pair if any
     logger.info(f"Merging pair wav into one wav")
     for pair in pair_list:
-        audios = openPairAudio(pair_list[pair], outdir)
-        # logger.debug(audios)
-        if audios:
-            first, second, fn = audios
-            combinePair(first, second, os.path.join(outdir, fn))
+        q_merge.put(pair)
+    
+    # block until all tasks are done
+    q_convert.join()
+    q_merge.join()
+
+
+if __name__ == "__main__":
+    main()
     logger.info(f"Finish")
