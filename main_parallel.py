@@ -186,6 +186,10 @@ def audioSeparation(session, rtp_list, rtp_codec_list, outdir=""):
     logger.info(f"converting audio in session (ssrc): {session} to {output}")
     raw2wav(audio, fn=output, fmt=fmt)
 
+def waitingFileExist(path):
+    # waiting for file exist
+    while not os.path.exists(path):
+        time.sleep(1)
 
 def openPairAudio(pair_list, outdir):
     logger.debug(pair_list)
@@ -194,8 +198,14 @@ def openPairAudio(pair_list, outdir):
     if au2 == None:
         return False
 
-    first = AudioSegment.from_file(os.path.join(outdir, f"{au1}.wav"), format="wav")
-    second = AudioSegment.from_file(os.path.join(outdir, f"{au2}.wav"), format="wav")
+    au1_path = os.path.join(outdir, f"{au1}.wav")
+    au2_path = os.path.join(outdir, f"{au2}.wav")
+
+    waitingFileExist(au1_path)
+    first = AudioSegment.from_file(au1_path, format="wav")
+    
+    waitingFileExist(au2_path)
+    second = AudioSegment.from_file(au2_path, format="wav")
     fn = "-".join([au1, f"{au2}.wav"])
     return first, second, fn
 
