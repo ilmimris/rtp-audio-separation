@@ -11,6 +11,7 @@ from joblib import Parallel, delayed
 
 import logging as logger
 from datetime import date
+import time
 today = date.today()
 
 # Init logger
@@ -144,16 +145,28 @@ def collectingPairSession(packet:pyshark.packet.packet.Packet
 def readStream(cap: pyshark.capture.file_capture.FileCapture
                 , rtp_list:dict={}, rtp_codec_list:dict={}
                 , pair_list:dict={}):
+    start_time = time.time()
+    countPacket = 0
+    bandwidth = 0
     for frame in cap:
-        pair_list       = collectingPairSession(frame, pair_list)
+        countPacket +=1
+        bandwidth = bandwidth + int(frame.length)
         try:
             rtp             = getRTPlayer(frame) 
+            pair_list       = collectingPairSession(frame, pair_list)
             rtp_codec_list  = collectingCodecBySession(rtp, rtp_codec_list)
             rtp_list        = collectingPayloadBySession(rtp, rtp_list)
         except Exception as e:
             logger.error(f"error: {e}")
 
+    total_time = time.time() - start_time
+    pps = countPacket/total_time
+
     logger.info(f"Finish scrap: {pcap_file}")
+    logger.info(f"Packet nr {countPacket}")
+    logger.info(f"Packet per second {pps}")
+    logger.info(f"Byte per second {bandwidth}")
+    logger.info("--- finish in {} seconds ---".format(total_time))
     return rtp_list, rtp_codec_list, pair_list
 
 def audioSeparation(session, rtp_list, rtp_codec_list, outdir=''):
