@@ -43,8 +43,6 @@ ap.add_argument(
     "-c", "--config", required=False, help="parser configuration path/to/config.yml"
 )
 
-args = vars(ap.parse_args())
-
 
 def loadconfig(configfile):
     with open(configfile, "r") as stream:
@@ -159,7 +157,7 @@ def readStream(
     countPacket = 0
     bandwidth = 0
     for packet in cap:
-        countPacket +=1
+        countPacket += 1
         bandwidth = bandwidth + int(packet.length)
         try:
             rtp = getRTPlayer(packet)
@@ -168,7 +166,7 @@ def readStream(
             rtp_list = collectingPayloadBySession(rtp, rtp_list)
         except Exception as e:
             logger.error(f"error: {e}")
-    
+
     logger.info(f"Packet nr {countPacket}")
     logger.info(f"Byte per second {bandwidth}")
     logger.info("finish read in {} seconds".format(time.time() - start_time))
@@ -181,15 +179,19 @@ def audioSeparation(session, rtp_list, rtp_codec_list, outdir=""):
     codec = rtp_codec_list[session]
     fmt = usePyWavCodec(codec)
     payload = concatPayload(rtp_packet)
+    logger.debug(payload)
     audio = packetPayload2RawAudio(payload)
+    logger.debug(audio)
     output = os.path.join(outdir, f"{session}.wav")
     logger.info(f"converting audio in session (ssrc): {session} to {output}")
     raw2wav(audio, fn=output, fmt=fmt)
+
 
 def waitingFileExist(path):
     # waiting for file exist
     while not os.path.exists(path):
         time.sleep(1)
+
 
 def openPairAudio(pair_list, outdir):
     logger.debug(pair_list)
@@ -203,7 +205,7 @@ def openPairAudio(pair_list, outdir):
 
     waitingFileExist(au1_path)
     first = AudioSegment.from_file(au1_path, format="wav")
-    
+
     waitingFileExist(au2_path)
     second = AudioSegment.from_file(au2_path, format="wav")
     fn = "-".join([au1, f"{au2}.wav"])
@@ -224,13 +226,14 @@ def converterWorker(queue, outdir, rtp_codec_list, rtp_list, pair_list):
     logger.debug("converterWorker Started")
     while True:
         rtp_ssrc = queue.get()
-        
+
         Path(outdir).mkdir(parents=True, exist_ok=True)
-        
+
         logger.info(f"Converting {rtp_ssrc}")
         audioSeparation(rtp_ssrc, rtp_list, rtp_codec_list, outdir=outdir)
         logger.info(f"Finish convert session {rtp_ssrc} raw audio to wav")
         queue.task_done()
+
 
 def mergingWorker(queue, outdir, pair_list):
     logger.debug("mergingWorker Started")
@@ -239,8 +242,8 @@ def mergingWorker(queue, outdir, pair_list):
 
         logger.info(f"Merging {pair}")
         audios = openPairAudio(pair_list[pair], outdir)
-        
-        outdir = outdir+'/merge'
+
+        outdir = outdir + "/merge"
         Path(outdir).mkdir(parents=True, exist_ok=True)
         logger.debug(audios)
         if audios:
@@ -249,7 +252,9 @@ def mergingWorker(queue, outdir, pair_list):
         queue.task_done()
 
 
-def main():
+if __name__ == "__main__":
+    args = vars(ap.parse_args())
+    
     rtp_list, rtp_codec_list, pair_list = {}, {}, {}
     pcap_file = (
         args["input"] if (args["input"]) else (os.path.join("../test_180s.pcap"))
@@ -271,9 +276,15 @@ def main():
 
     # turn-on the worker thread
     threads = []
-    for i in range(int(NUM_CORES*0.5)):
-        t1 = Thread(target=converterWorker, args=(q_convert, outdir, rtp_codec_list, rtp_list, pair_list, ), daemon=True)
-        t2 = Thread(target=mergingWorker, args=(q_merge, outdir, pair_list, ), daemon=True)
+    for i in range(int(NUM_CORES * 0.5)):
+        t1 = Thread(
+            target=converterWorker,
+            args=(q_convert, outdir, rtp_codec_list, rtp_list, pair_list,),
+            daemon=True,
+        )
+        t2 = Thread(
+            target=mergingWorker, args=(q_merge, outdir, pair_list,), daemon=True
+        )
         threads.append(t1)
         threads.append(t2)
         t1.start()
@@ -282,20 +293,18 @@ def main():
     # queueStream(cap, queue)
 
     logger.info(f"Converting raw audio to wav")
+
     for rtp_ssrc in rtp_list:
         q_convert.put(rtp_ssrc)
     logger.info(f"Finish convert raw audio to wav")
-    
+
     # combine pair if any
     logger.info(f"Merging pair wav into one wav")
     for pair in pair_list:
         q_merge.put(pair)
-    
+
     # block until all tasks are done
     q_convert.join()
     q_merge.join()
 
-
-if __name__ == "__main__":
-    main()
     logger.info(f"Finish")
