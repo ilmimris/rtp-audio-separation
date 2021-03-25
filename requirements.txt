@@ -2,4 +2,4 @@ Cython==0.29.20
 pyshark==0.4.2.11
 pywav==1.1
 pydub
-PyYAML==5.3.1
+PyYAML==5.4
